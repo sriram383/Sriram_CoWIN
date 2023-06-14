@@ -1,0 +1,143 @@
+{% include "header.html" %} {% block content %}
+
+<h1 class="text-primary">Hello Admin !!!</h1>
+<h2>Available Vaccine Centers:</h2>
+<div style="display: flex; flex-direction: row">
+  <div style="width: 50vw; text-align: center">
+    <table>
+      <thead>
+        <tr>
+          <th
+            style="
+              font-size: 20px;
+              font-weight: bold;
+              padding: 20px;
+              margin-right: 20px;
+            "
+          >
+            Location
+          </th>
+          <th
+            style="
+              font-size: 20px;
+              font-weight: bold;
+              padding: 20px;
+              margin-right: 20px;
+            "
+          >
+            Seats Available
+          </th>
+          <th
+            style="
+              font-size: 20px;
+              font-weight: bold;
+              padding: 20px;
+              margin-right: 20px;
+            "
+          >
+            Dosage Available
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for details in data %}
+        <tr>
+          <td
+            style="
+              font-size: 15px;
+              font-weight: bold;
+              padding: 20px;
+              margin-right: 20px;
+            "
+          >
+            {{ details['location'] }}
+          </td>
+          <td
+            style="
+              font-size: 15px;
+              font-weight: bold;
+              padding: 20px;
+              margin-right: 20px;
+            "
+          >
+            {{ details['seatRemaining'] }}
+          </td>
+          <td
+            style="
+              font-size: 15px;
+              font-weight: bold;
+              padding: 20px;
+              margin-right: 20px;
+            "
+          >
+            {{ details['dosageAvailable'] }}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div style="text-align: left; width: 400px;">
+      <h3>Delete Location:</h3>
+      <form action="/delete" method="POST">
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="text"
+            name="location"
+            placeholder="location"
+            required
+          />
+        </div>
+        <button class="btn btn-primary" type="submit">Delete</button>
+      </form>
+    </div>
+  </div>
+  <div style="width: 50vw; padding-left: 10%;">
+    <div class="col-md-9 personal-info">
+      <h3>Add Location</h3>
+      <form class="form-horizontal" role="form" method="POST" action="/add">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Location:</label>
+          <div class="col-lg-8">
+            <input
+              class="form-control"
+              type="text"
+              name="location"
+              placeholder="location"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Seats Available</label>
+          <div class="col-lg-8">
+            <input
+              class="form-control"
+              type="text"
+              name="seatRemaining"
+              placeholder="seatRemaining"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Dosage Available:</label>
+          <div class="col-lg-8">
+            <input
+              class="form-control"
+              type="text"
+              name="dosageAvailable"
+              placeholder="dosageAvailable"
+              required
+            />
+          </div>
+        </div>
+        <div style="padding-left: 145px">
+          <button class="btn btn-primaryS" type="submit">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock content %} {% include "footer.html" %}

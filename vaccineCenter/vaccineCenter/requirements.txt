@@ -1,0 +1,9 @@
+Flask
+Flask-PyMongo
+Werkzeug
+python-decouple
+gunicorn
+bcrypt
+pyjwt
+pymongo
+Flask-reCaptcha
