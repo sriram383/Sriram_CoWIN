@@ -1,0 +1,19 @@
+{% include "header.html" %} {% block content %}
+
+<h1>Details of the Location</h1>
+{% if data %}
+<h4>Located At: {{data['location']}}</h4>
+<h4>Seats Available: {{data['seatRemaining']}}</h4>
+{% if data['isOpen']%}
+<h4>Is it Opened: Yes</h4>
+<form action="/book" method="POST">
+  <input type="hidden" id="location" name="location" value={{data['location']}}>
+  <button class="btn btn-primary" type="submit">Book</button>
+</form>
+{% else %}
+<h4>Is it Opened: No</h4>
+{% endif %}
+{% else %}
+<p>No vaccine center found..!!!</p>
+
+{% endif %} {% endblock content %} {% include "footer.html" %}
